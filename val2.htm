@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #ff0066;
+        }
+
+        .heart {
+            font-size: 100px;
+            color: #ff0066;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .button {
+            background-color: #ff0066;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 16px;
+            margin: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #ff3399; /* changed hover color */
+            transform: scale(1.1); /* added scale effect */
+        }
+
+        #no-btn {
+            position: absolute;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #771313;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine?</h1>
+        <div class="gif_container">
+            <center><img src="https://media.tenor.com/efbi1EpFlVUAAAAi/bugcat-capoo.gif" alt="Cute Capoo GIF" height="100px" >
+        </div></center>
+            <center> <button id="yes-btn" class="button">Yes</button>
+        <button id="no-btn" class="button">No</button>
+        <div id="result"></div>
+    </div></center>
+       
+    <script>
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const resultDiv = document.getElementById('result');
+
+        yesBtn.addEventListener('click', () => {
+  resultDiv.innerHTML = 'Yay! I\'m so happy you said yes!';
+  const yesGif = document.createElement('img');
+  yesGif.src = 'https://media.tenor.com/rkiqKPy36ecAAAAC/bugcat-capoo.gif';
+  yesGif.width = 300;
+  yesGif.height = 200;
+  resultDiv.appendChild(yesGif);
+});
+
+
+
+        noBtn.addEventListener('click', () => {
+            teaseNoBtn();
+        });
+
+        function teaseNoBtn() {
+            const containerRect = document.querySelector('.container').getBoundingClientRect();
+            const noBtnRect = noBtn.getBoundingClientRect();
+            const newX = Math.floor(Math.random() * (containerRect.width - noBtnRect.width));
+            const newY = Math.floor(Math.random() * (containerRect.height - noBtnRect.height));
+            noBtn.style.top = `${newY}px`;
+            noBtn.style.left = `${newX}px`;
+            
+        }
+    </script>
+</body>
+</html>
